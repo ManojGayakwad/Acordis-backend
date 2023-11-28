@@ -1,16 +1,14 @@
 const express = require('express');
-
 const cors = require("cors")
 const { connection } = require("./config/db.js")
-const userRoutes = require("./routes/User/UserRoutes");
-
+const ChargingStation = require("./routes/ChargingStation.route.js")
 const app = express();
 const PORT = 5000;
 app.use(cors());
 app.use(express.json())
 
 app.use(cors())
-app.use('/api/auth', userRoutes);
+app.use('/api', ChargingStation);
 
 
 app.listen(PORT, async () => {
