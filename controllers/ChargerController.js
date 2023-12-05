@@ -1,6 +1,20 @@
 const Charger = require('../models/Charger.JS');
 const Site = require('../models/Site.JS');
 
+
+
+
+const getChargers = async (req, res) => {
+    try {
+      const chargers = await Charger.find();
+  
+      res.status(200).json(chargers);
+    } catch (error) {
+      console.error('Error getting chargers:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
+
 const createCharger = async (req, res) => {
     try {
       
@@ -30,5 +44,5 @@ const createCharger = async (req, res) => {
 
 
 module.exports = {
-    createCharger
+    createCharger,getChargers
   };
